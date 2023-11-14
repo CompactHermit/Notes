@@ -1,0 +1,24 @@
+@document.meta
+title: README
+description: 
+authors: CompactHermit
+categories: [
+    Typst Docs
+    Notes
+]
+created: 2023-11-13T09:22:31-0500
+updated: 2023-11-14T15:48:30-0500
+version: 1.1.1
+@end
+
+* Math Notes Collection::
+  > Specially curated Math notes with Typst and Latex
+** Design::
+** TODOS::
+   #contexts Doc Gen
+   - (-) Add Latex Docs
+   - (-) Add gh workFlows, for both Docgen and Checks %preferabbly for when I migrate to Gitlab%
+   - (=) 
+   #contexts Notes
+   - (=) Category Theory::
+   -- (?) Read through Mac Lane's Chapter 1-4.

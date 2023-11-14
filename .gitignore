@@ -1,0 +1,5 @@
+# Nix Stuffs
+result/
+.direnv/
+.pre-commit-config.yaml
+*.pdf
