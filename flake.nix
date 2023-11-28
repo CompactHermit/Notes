@@ -31,29 +31,26 @@
         ]
         ++ [
           ./lib.nix
-          ./Alg_Top
-          ./Abs_Alg
-          ./Topology
-          ./Category_Theory
+          # ./Alg_Top
+          # ./Abs_Alg
+          # ./Topology
+          # ./Category_Theory
           #./Analysis
         ];
       perSystem = {
         self',
+        lib,
         config,
         pkgs,
-        inputs',
-        system,
-        lib,
         ...
       }: {
-        packages = {
-          typst-lsp = pkgs.writeShellApplication "typst-lsp" {
-            description = "A wrapper around typst-lsp";
-            exec = ''
-              XDG_CACHE_HOME=${self'.typst-packages} ${lib.getExe pkgs.typst-lsp}
-            '';
-          };
-        };
+        packages =
+          {
+            typst-lsp-wrapped = self.lib.makeWrapper "typst-lsp";
+            typst-wrapped = self.lib.makeWrapper "typst";
+            typst-dev-wrapped = self.lib.makeWrapper "typst-dev";
+          }
+          // (self.lib.import' ./src self pkgs);
 
         treefmt = {
           projectRootFile = "flake.nix";
@@ -85,8 +82,8 @@
 
         devShells = {
           default = pkgs.mkShell {
-            name = "An Overengineered Devshell";
-            buildInputs = with pkgs; [typst-fmt] ++ (with self'; [typst-lsp]);
+            name = "Awooga!";
+            buildInputs = with pkgs; [typst-fmt] ++ (with self'.packages; [typst-lsp-wrapped typst-dev-wrapped typst-wrapped]);
             inputsFrom = with config; [
               treefmt.build.devShell
               pre-commit.devShell
