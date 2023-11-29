@@ -4,10 +4,12 @@
   ...
 }: let
   #inherit (nixpkgs)
-  inherit (pkgs) lib writeShellApplication linkFarm symlinkJoin; ## Use the above implementation,
+  inherit (pkgs) lib writeShellApplication linkFarm symlinkJoin; ## We simply call packages when it's in scope, rather then doing a full import
+  #inherit (nixpkgs) lib;
   inherit (builtins) pathExists readDir readFileType attrValues;
-  inherit (lib) concatMapAttrs;
+  inherit (lib) concatMapAttrs getExe;
   inherit (lib.strings) hasSuffix removeSuffix;
+  inherit (lib.attrsets) foldAttrs;
 
   typst-packages = linkFarm "typst" [
     {
@@ -34,7 +36,7 @@ in {
         inherit src;
         buildInputs = with pkgs; [typst-dev];
         buildPhase = ''
-          XDG_CACHE_HOME=${typst-packages} ${lib.getExe pkgs.typst-dev} compile --font-path ${fontsConf} main.typ ${name}-docs.pdf
+          XDG_CACHE_HOME=${typst-packages} ${getExe pkgs.typst-dev} compile --font-path ${fontsConf} main.typ ${name}-docs.pdf
         '';
         installPhase =
           /*
@@ -49,7 +51,7 @@ in {
       writeShellApplication {
         name = "${package}";
         text = ''
-          XDG_CACHE_HOME=${typst-packages} ${lib.getExe pkgs.${package}} "$@"
+          XDG_CACHE_HOME=${typst-packages} ${getExe pkgs.${package}} "$@"
         '';
       };
     import' = dir: self: pkgs:
@@ -74,8 +76,7 @@ in {
           (readDir dir)
         else {};
     in
-      lib.attrsets.foldAttrs (x: y: x // y)
-      {}
+      foldAttrs (x: y: x // y) {}
       (map (file: import file {inherit self pkgs;}) (attrValues (readModules dir)));
   };
 }

@@ -1,5 +1,6 @@
 # Nix Stuffs
-result/
+./result
 .direnv/
 .pre-commit-config.yaml
-*.pdf
+.session.vim
+

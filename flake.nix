@@ -31,11 +31,6 @@
         ]
         ++ [
           ./lib.nix
-          # ./Alg_Top
-          # ./Abs_Alg
-          # ./Topology
-          # ./Category_Theory
-          #./Analysis
         ];
       perSystem = {
         self',

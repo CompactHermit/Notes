@@ -7,7 +7,7 @@ categories: [
     Notes
 ]
 created: 2023-11-13T09:22:31-0500
-updated: 2023-11-14T15:48:30-0500
+updated: 2023-11-28T11:38:15-0500
 version: 1.1.1
 @end
 
@@ -22,3 +22,5 @@ version: 1.1.1
    #contexts Notes
    - (=) Category Theory::
    -- (?) Read through Mac Lane's Chapter 1-4.
+
+** {/ ~/neorg/CS/Typst.norg}[Norg Notes For Typst]
