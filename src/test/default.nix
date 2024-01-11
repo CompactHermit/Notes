@@ -1,5 +1,4 @@
 {
-  self,
   pkgs,
   ...
 }:
@@ -11,9 +10,10 @@
 #   ...
 #       }:
 let
-  name = "Test";
-  fonts = with pkgs; [victor-mono];
-in {
-  ${name} = self.lib.buildTypstDoc ./. fonts name;
+  name = "test";
+  fonts = with pkgs; [ victor-mono ];
+in
+{
+  ${name} = pkgs.lib.typstHelper.buildTypstDoc fonts name;
   # };
 }

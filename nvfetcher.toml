@@ -1,0 +1,8 @@
+[typst-packages]
+fetch.github = "typst/packages"
+src.git = "https://github.com/typst/packages"
+
+[tinymist]
+fetch.github = "Myriad-Dreamin/tinymist"
+src.git = "https://github.com/Myriad-Dreamin/tinymist"
+cargo_locks = ["Cargo.lock"]

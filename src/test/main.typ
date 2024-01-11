@@ -1,29 +1,40 @@
-#import "@preview/prooftrees:0.1.0": *
-#import "colors.typ":*
+#import "templates.typ": conf
+#import "@preview/fletcher:0.4.3": *
+// #import "@": items
+#show: doc => conf(
+  title: [Hermit Templates Ipsum Junk],
+  authors: (
+    (
+      name: "Compact Hermitian",
+      affiliation: "Some uni PhD Department, Not Doxing Myself",
+      email: "compacthermitian@proton.me",
+    ),
+    (
+      name: "Some Faggot on the internet",
+      affiliation: "Somewhere in the far off galaxy",
+      email: "Darth.Something@genghis.compacthermit.dev",
+    ),
+  ),
+  abstract: lorem(80),
+  doc,
+)
 
-#rect(fill: atomic-tangerine)[Awooga]
-#for x in range(3) [
-  Hi #x.
-]
 
-#for letter in "awoo ga" {
-  if letter == " " {
-    break
-  }
-  letter
-}
 
-$ f(x) $
-#set text(14pt) // All text is 14 pixels now
-Even though the size here is normal, we can #text(20pt)[set the context] to
-increase size
+#figure(
+  image("../assets/HTT.png"),
+  caption: ["Some HTT Kinda Shit"],
+) <faker>
+#figure(
+  image("../assets/haskell.png"),
+  caption: ["Some HTT Kinda Shit"],
+) <infirm>
+= Introduction
+#lorem(300)
+== Helper::
+#lorem(40)
 
-#set enum(numbering: "1.1")
-
-Good results can only be obtained by
-+ following best practices
-  + nest
-  + second nest
-+ being aware of current results of other researchers
-+ checking the data for biases
-
+=== Helper::
+#lorem(300)
+==== Oops::
+#lorem(400)

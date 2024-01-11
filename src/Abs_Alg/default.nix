@@ -1,10 +1,12 @@
 {
-  self,
   pkgs,
   ...
-}: let
+}:
+let
+  inherit (pkgs.lib.typstHelper) buildTypstDoc;
   name = "Abstract_Algebra";
-  fonts = with pkgs; [victor-mono];
-in {
-  ${name} = self.lib.buildTypstDoc ./. fonts name;
+  fonts = builtins.attrValues { inherit (pkgs) victor-mono; };
+in
+{
+  ${name} = buildTypstDoc fonts name;
 }

@@ -1,6 +1,15 @@
-# Nix Stuffs
-./result
+#Nix Stuffs
+result
 .direnv/
 .pre-commit-config.yaml
+
+#Syncthing Junks
+.stfolder/
+.stignore
+
+# Vim Stuffs
 .session.vim
 
+# PDF watches
+main.pdf
+*.pdf

@@ -1,0 +1,6 @@
+.direnv/
+result
+*.pdf
+flake.lock
+.pre-commit-hook
+.assets/

@@ -6,5 +6,5 @@
   name = "TODO2";
   fonts = with pkgs; [victor-mono];
 in {
-  ${name} = self.lib.buildTypstDoc ./. fonts name;
+  ${name} = pkgs.lib.typstHelper.buildTypstDoc fonts name;
 }

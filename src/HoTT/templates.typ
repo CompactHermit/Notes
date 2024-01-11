@@ -1,3 +1,3 @@
-#let amazed(term) = box[✨ #term ✨]
+#let codly_option = {
 
-You are #amazed[beautiful]!
+}
